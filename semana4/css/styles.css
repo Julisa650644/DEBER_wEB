@@ -1,0 +1,118 @@
+/* Fondo y tipografía */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9; /* fondo claro */
+  margin: 0;
+  padding: 0;
+}
+
+/* Encabezados */
+h1 {
+  font-size: 1.8em;
+  color: #222; /* gris oscuro */
+  text-align: center;
+}
+
+h2 {
+  color: #333;
+  margin-top: 15px;
+}
+
+/* Secciones */
+section {
+  margin: 15px;
+  padding: 10px;
+  background-color: #fff;
+}
+
+/* Navegación */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #000;
+}
+
+/* Bloques de productos (como la imagen) */
+.producto {
+  background-color: #fff;
+  border: 1px solid #ccc; /* borde simple */
+  padding: 12px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.producto h5 {
+  margin-bottom: 6px;
+  color: #222;
+  font-size: 1.1em;
+}
+
+.producto p {
+  color: #555;
+  font-size: 0.95em;
+}
+
+/* Tablas con bordes simples */
+table {
+  width: 100%;
+  border-collapse: collapse; /* une los bordes */
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #333; /* borde sencillo */
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #eee; /* fondo claro para encabezados */
+}
+
+/* Botones */
+.btn {
+  margin: 5px;
+  padding: 6px 12px;
+  background-color: #444;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #666;
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.4em;
+  }
+  section {
+    margin: 8px;
+    padding: 8px;
+  }
+  nav ul li {
+    display: block;
+    margin: 5px 0;
+  }
+}
