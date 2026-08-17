@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio | Ferretería La Casa del Clavo{% endblock %}
+{% block header %}Página principal informativa{% endblock %}
+
+{% block content %}
+<section class="hero-card overflow-hidden mb-4">
+  <div class="row g-0 align-items-center">
+    <div class="col-lg-7 p-4 p-md-5">
+      <span class="badge text-bg-warning mb-3">Calidad para construir tus ideas</span>
+      <h2 class="display-6 fw-bold">Ferretería La Casa del Clavo</h2>
+      <p class="lead text-secondary">Somos una ferretería ubicada en Puyo, dedicada a ofrecer productos de calidad para la construcción y el hogar.</p>
+      <p>Nuestro objetivo es apoyar a estudiantes, familias y trabajadores con herramientas confiables, materiales útiles y precios accesibles.</p>
+      <a href="{{ url_for('productos') }}" class="btn btn-dark me-2">Ver productos</a>
+      <a href="#contacto" class="btn btn-outline-dark">Contacto</a>
+    </div>
+    <div class="col-lg-5">
+      <img src="{{ url_for('static', filename='img/ferreteria.jpg') }}" class="hero-image" alt="Ferretería La Casa del Clavo">
+    </div>
+  </div>
+</section>
+
+<section class="mb-5">
+  <div class="section-title mb-3">
+    <h2 class="h3">Nuestros módulos</h2>
+    <p class="text-secondary mb-0">Acceso rápido a las secciones principales del sistema.</p>
+  </div>
+  <div class="row g-4">
+    <div class="col-md-6 col-xl-3">
+      <div class="card module-card h-100 border-0 shadow-sm">
+        <div class="card-body"><i class="bi bi-box-seam icon-module"></i><h3 class="h5 mt-3">Productos</h3><p class="text-secondary">Consulta el catálogo, precios y existencias de ejemplo.</p><a href="{{ url_for('productos') }}" class="stretched-link text-decoration-none">Ingresar</a></div>
+      </div>
+    </div>
+    <div class="col-md-6 col-xl-3">
+      <div class="card module-card h-100 border-0 shadow-sm">
+        <div class="card-body"><i class="bi bi-people icon-module"></i><h3 class="h5 mt-3">Clientes</h3><p class="text-secondary">Visualiza información básica de los clientes registrados.</p><a href="{{ url_for('clientes') }}" class="stretched-link text-decoration-none">Ingresar</a></div>
+      </div>
+    </div>
+    <div class="col-md-6 col-xl-3">
+      <div class="card module-card h-100 border-0 shadow-sm">
+        <div class="card-body"><i class="bi bi-truck icon-module"></i><h3 class="h5 mt-3">Proveedores</h3><p class="text-secondary">Organiza contactos y líneas de abastecimiento.</p><a href="{{ url_for('proveedores') }}" class="stretched-link text-decoration-none">Ingresar</a></div>
+      </div>
+    </div>
+    <div class="col-md-6 col-xl-3">
+      <div class="card module-card h-100 border-0 shadow-sm">
+        <div class="card-body"><i class="bi bi-receipt icon-module"></i><h3 class="h5 mt-3">Facturación</h3><p class="text-secondary">Revisa facturas y estados con datos demostrativos.</p><a href="{{ url_for('facturacion') }}" class="stretched-link text-decoration-none">Ingresar</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="contact-card p-4 p-md-5">
+  <div class="row g-4">
+    <div class="col-md-7">
+      <h2 class="h3">Contacto</h2>
+      <p class="mb-2"><i class="bi bi-envelope me-2"></i><strong>Correo:</strong> julisamerino@gmail.com</p>
+      <p class="mb-2"><i class="bi bi-telephone me-2"></i><strong>Teléfono:</strong> 0984027489</p>
+      <p class="mb-0"><i class="bi bi-geo-alt me-2"></i><strong>Dirección:</strong> Puyo, Ecuador</p>
+    </div>
+    <div class="col-md-5">
+      <h3 class="h5">Atención</h3>
+      <p class="text-secondary mb-0">Consulta nuestro catálogo y conoce los módulos desarrollados para la administración básica de la ferretería.</p>
+    </div>
+  </div>
+</section>
+{% endblock %}

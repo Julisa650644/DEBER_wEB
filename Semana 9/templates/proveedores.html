@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Proveedores | La Casa del Clavo{% endblock %}
+{% block header %}Módulo de proveedores{% endblock %}
+{% block content %}
+<div class="mb-4"><h2 class="h3 mb-1">Proveedores</h2><p class="text-secondary">Información demostrativa de empresas que abastecen productos a la ferretería.</p></div>
+<div class="row g-4">
+{% for proveedor in proveedores %}
+  <div class="col-lg-4">
+    <div class="card h-100 border-0 shadow-sm supplier-card"><div class="card-body"><span class="badge text-bg-dark mb-3">{{ proveedor.id }}</span><h3 class="h5">{{ proveedor.empresa }}</h3><hr><p><strong>Contacto:</strong> {{ proveedor.contacto }}</p><p><strong>Teléfono:</strong> {{ proveedor.telefono }}</p><p class="mb-0"><strong>Suministra:</strong> {{ proveedor.producto }}</p></div></div>
+  </div>
+{% endfor %}
+</div>
+{% endblock %}

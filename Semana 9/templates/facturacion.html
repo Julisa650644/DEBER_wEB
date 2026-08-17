@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Facturación | La Casa del Clavo{% endblock %}
+{% block header %}Módulo de facturación{% endblock %}
+{% block content %}
+<div class="row g-4 mb-4">
+  <div class="col-md-8"><h2 class="h3 mb-1">Facturación</h2><p class="text-secondary mb-0">Resumen visual de facturas generadas con datos de ejemplo.</p></div>
+  <div class="col-md-4"><div class="summary-card p-3"><span class="small text-secondary">Facturas mostradas</span><div class="fs-3 fw-bold">{{ facturas|length }}</div></div></div>
+</div>
+<div class="table-responsive shadow-sm rounded-3">
+<table class="table table-striped align-middle mb-0 bg-white">
+  <thead class="table-dark"><tr><th>Número</th><th>Cliente</th><th>Fecha</th><th>Total</th><th>Estado</th></tr></thead>
+  <tbody>
+  {% for factura in facturas %}
+    <tr><td class="fw-semibold">{{ factura.numero }}</td><td>{{ factura.cliente }}</td><td>{{ factura.fecha }}</td><td>${{ "%.2f"|format(factura.total) }}</td><td>{% if factura.estado == 'Pagada' %}<span class="badge text-bg-success">Pagada</span>{% else %}<span class="badge text-bg-warning">Pendiente</span>{% endif %}</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}
