@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}Productos | La Casa del Clavo{% endblock %}
+
+{% block header %}Módulo de productos{% endblock %}
+
+{% block content %}
+
+<div class="mb-4">
+    <h2 class="h3 mb-1">Productos</h2>
+    <p class="text-secondary mb-0">
+        Inventario generado dinámicamente desde una lista de Python.
+    </p>
+</div>
+
+<div class="row g-4">
+
+    <!-- Bucle Jinja2 -->
+    {% for producto in productos %}
+
+    <div class="col-md-6 col-xl-4">
+        <article class="card h-100 border-0 shadow-sm product-card">
+
+            <div class="card-body">
+
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <span class="badge text-bg-dark">
+                        {{ producto.codigo }}
+                    </span>
+
+                    <!-- Condicional Jinja2 -->
+                    {% if producto.stock > 0 %}
+                        <span class="badge bg-success">
+                            Disponible
+                        </span>
+                    {% else %}
+                        <span class="badge bg-danger">
+                            Agotado
+                        </span>
+                    {% endif %}
+                </div>
+
+                <!-- Filtro upper -->
+                <h3 class="h5">
+                    {{ producto.nombre|upper }}
+                </h3>
+
+                <p class="text-secondary">
+                    {{ producto.descripcion }}
+                </p>
+
+                <p class="mb-2">
+                    <strong>Categoría:</strong>
+                    {{ producto.categoria }}
+                </p>
+
+                <p class="mb-2">
+                    <strong>Precio:</strong>
+                    ${{ "%.2f"|format(producto.precio) }}
+                </p>
+
+                <p class="mb-0">
+                    <strong>Stock:</strong>
+                    {{ producto.stock }} unidades
+                </p>
+
+            </div>
+
+            <div class="card-footer bg-transparent border-0 pt-0 pb-4 px-4">
+
+                {% if producto.stock > 0 %}
+                    <button class="btn btn-primary w-100"
+                            onclick="mostrarMensaje('{{ producto.nombre }}')">
+                        Consultar producto
+                    </button>
+                {% else %}
+                    <button class="btn btn-secondary w-100" disabled>
+                        Sin existencias
+                    </button>
+                {% endif %}
+
+            </div>
+
+        </article>
+    </div>
+
+    {% else %}
+
+    <div class="col-12">
+        <div class="alert alert-warning">
+            No existen productos registrados.
+        </div>
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}
