@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Proveedores | La Casa del Clavo{% endblock %}
+
+{% block header %}Módulo de proveedores{% endblock %}
+
+{% block content %}
+
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+    <div>
+        <h2 class="h3 mb-1">Proveedores</h2>
+        <p class="text-secondary mb-0">Información de proveedores enviada desde Flask.</p>
+    </div>
+    <a class="btn btn-primary" href="{{ url_for('nuevo_proveedor') }}"><i class="bi bi-truck me-1"></i> Nuevo proveedor</a>
+</div>
+
+<div class="table-responsive shadow-sm rounded-3">
+    <table class="table table-hover align-middle mb-0">
+
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Empresa</th>
+                <th>Contacto</th>
+                <th>Teléfono</th>
+                <th>Producto</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for proveedor in proveedores %}
+
+            <tr>
+                <td>{{ proveedor.id }}</td>
+
+                <td class="fw-semibold">
+                    {{ proveedor.empresa|upper }}
+                </td>
+
+                <td>{{ proveedor.contacto }}</td>
+                <td>{{ proveedor.telefono }}</td>
+                <td>{{ proveedor.producto }}</td>
+
+                <td>
+                    {% if proveedor.estado == "Activo" %}
+                        <span class="badge bg-success">
+                            Activo
+                        </span>
+                    {% else %}
+                        <span class="badge bg-danger">
+                            Inactivo
+                        </span>
+                    {% endif %}
+                </td>
+            </tr>
+
+            {% else %}
+
+            <tr>
+                <td colspan="6" class="text-center py-4">
+                    No existen proveedores registrados.
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+</div>
+
+{% endblock %}

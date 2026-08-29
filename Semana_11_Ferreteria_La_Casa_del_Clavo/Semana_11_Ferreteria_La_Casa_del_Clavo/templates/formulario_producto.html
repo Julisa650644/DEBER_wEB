@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% from "components/campo_formulario.html" import mostrar_campo %}
+
+{% block title %}Nuevo producto | La Casa del Clavo{% endblock %}
+{% block header %}Formulario de productos{% endblock %}
+
+{% block content %}
+<div class="form-card card border-0 shadow-sm mx-auto">
+    <div class="card-body p-4 p-md-5">
+        <h2 class="h3">Registrar producto</h2>
+        <p class="text-secondary">Complete los datos. Los campos serán validados antes de guardarse temporalmente.</p>
+        <form method="POST" novalidate>
+            {{ form.hidden_tag() }}
+            <div class="row">
+                <div class="col-md-4">{{ mostrar_campo(form.codigo) }}</div>
+                <div class="col-md-8">{{ mostrar_campo(form.nombre) }}</div>
+                <div class="col-md-6">{{ mostrar_campo(form.categoria, "form-select") }}</div>
+                <div class="col-md-3">{{ mostrar_campo(form.precio) }}</div>
+                <div class="col-md-3">{{ mostrar_campo(form.stock) }}</div>
+            </div>
+            {{ mostrar_campo(form.descripcion) }}
+            <div class="d-flex gap-2">
+                {{ form.submit(class="btn btn-primary") }}
+                <a class="btn btn-outline-secondary" href="{{ url_for('productos') }}">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+

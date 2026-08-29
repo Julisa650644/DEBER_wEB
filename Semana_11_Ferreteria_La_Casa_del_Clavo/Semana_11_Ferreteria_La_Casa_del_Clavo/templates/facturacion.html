@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}Facturación | La Casa del Clavo{% endblock %}
+
+{% block header %}Módulo de facturación{% endblock %}
+
+{% block content %}
+
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+
+    <div>
+        <h2 class="h3 mb-1">Facturación</h2>
+        <p class="text-secondary mb-0">
+            Registro dinámico de facturas de ejemplo.
+        </p>
+    </div>
+
+    <div class="d-flex align-items-center gap-3">
+        <div class="summary-box">
+            <span>Total registrado</span>
+            <strong>${{ "%.2f"|format(total_ventas) }}</strong>
+        </div>
+        <a class="btn btn-primary" href="{{ url_for('nueva_factura') }}"><i class="bi bi-receipt me-1"></i> Nueva factura</a>
+    </div>
+
+</div>
+
+<div class="table-responsive shadow-sm rounded-3">
+    <table class="table table-hover align-middle mb-0">
+
+        <thead class="table-dark">
+            <tr>
+                <th>Número</th>
+                <th>Cliente</th>
+                <th>Fecha</th>
+                <th>Total</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for factura in facturas %}
+
+            <tr>
+                <td class="fw-semibold">
+                    {{ factura.numero }}
+                </td>
+
+                <td>{{ factura.cliente }}</td>
+                <td>{{ factura.fecha }}</td>
+
+                <td>
+                    ${{ "%.2f"|format(factura.total) }}
+                </td>
+
+                <td>
+                    {% if factura.estado == "Pagada" %}
+                        <span class="badge bg-success">
+                            Pagada
+                        </span>
+                    {% else %}
+                        <span class="badge bg-warning text-dark">
+                            Pendiente
+                        </span>
+                    {% endif %}
+                </td>
+            </tr>
+
+            {% else %}
+
+            <tr>
+                <td colspan="5" class="text-center py-4">
+                    No existen facturas registradas.
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
