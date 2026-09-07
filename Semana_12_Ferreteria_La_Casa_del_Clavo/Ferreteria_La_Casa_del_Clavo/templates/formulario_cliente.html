@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% from "components/campo_formulario.html" import mostrar_campo %}
+
+{% block title %}Nuevo cliente | La Casa del Clavo{% endblock %}
+{% block header %}Formulario de clientes{% endblock %}
+
+{% block content %}
+<div class="form-card card border-0 shadow-sm mx-auto">
+    <div class="card-body p-4 p-md-5">
+        <h2 class="h3">Registrar cliente</h2>
+        <p class="text-secondary">Ingrese la información del cliente.</p>
+        <form method="POST" novalidate>
+            {{ form.hidden_tag() }}
+            {{ mostrar_campo(form.nombre) }}
+            <div class="row">
+                <div class="col-md-6">{{ mostrar_campo(form.telefono) }}</div>
+                <div class="col-md-6">{{ mostrar_campo(form.correo) }}</div>
+            </div>
+            <div class="form-check mb-4">
+                {{ form.activo(class="form-check-input") }}
+                {{ form.activo.label(class="form-check-label") }}
+            </div>
+            <div class="d-flex gap-2">
+                {{ form.submit(class="btn btn-primary") }}
+                <a class="btn btn-outline-secondary" href="{{ url_for('clientes') }}">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+

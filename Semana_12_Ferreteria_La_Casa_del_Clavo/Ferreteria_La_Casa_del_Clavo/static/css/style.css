@@ -1,0 +1,82 @@
+body {
+    background-color: #f5f7fa;
+    color: #252525;
+}
+
+.page-header {
+    background: linear-gradient(135deg, #f6b600, #ffcf40);
+    color: #222;
+}
+
+.hero-section {
+    background: linear-gradient(135deg, #1f2937, #111827);
+    color: white;
+}
+
+.hero-icon {
+    font-size: 7rem;
+    color: #f6b600;
+}
+
+.dashboard-card,
+.product-card,
+.client-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dashboard-card:hover,
+.product-card:hover,
+.client-card:hover {
+    transform: translateY(-4px);
+}
+
+.avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #f6b600;
+    color: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.summary-box {
+    min-width: 180px;
+    background-color: #fff;
+    border-left: 5px solid #f6b600;
+    border-radius: 10px;
+    padding: 12px 18px;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.summary-box span,
+.summary-box strong {
+    display: block;
+}
+
+.summary-box strong {
+    font-size: 1.5rem;
+}
+
+.min-vh-75 {
+    min-height: 75vh;
+}
+
+.navbar .nav-link.active {
+    color: #f6b600 !important;
+    font-weight: 700;
+}
+
+.form-card {
+    max-width: 850px;
+}
+
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+    border-color: #f6b600;
+    box-shadow: 0 0 0 0.25rem rgba(246, 182, 0, 0.2);
+}

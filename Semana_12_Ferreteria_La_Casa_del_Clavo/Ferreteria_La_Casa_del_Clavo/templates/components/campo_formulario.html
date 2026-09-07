@@ -1,0 +1,10 @@
+{% macro mostrar_campo(campo, clase="form-control") %}
+    <div class="mb-3">
+        {{ campo.label(class="form-label fw-semibold") }}
+        {{ campo(class=clase + (" is-invalid" if campo.errors else "")) }}
+        {% for error in campo.errors %}
+            <div class="invalid-feedback">{{ error }}</div>
+        {% endfor %}
+    </div>
+{% endmacro %}
+

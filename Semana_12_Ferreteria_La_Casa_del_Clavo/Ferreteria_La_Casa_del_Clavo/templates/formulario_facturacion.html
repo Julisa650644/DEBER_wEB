@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% from "components/campo_formulario.html" import mostrar_campo %}
+
+{% block title %}Nueva factura | La Casa del Clavo{% endblock %}
+{% block header %}Formulario de facturación{% endblock %}
+
+{% block content %}
+<div class="form-card card border-0 shadow-sm mx-auto">
+    <div class="card-body p-4 p-md-5">
+        <h2 class="h3">Registrar factura</h2>
+        <p class="text-secondary">Complete los datos principales de la factura.</p>
+        <form method="POST" novalidate>
+            {{ form.hidden_tag() }}
+            <div class="row">
+                <div class="col-md-6">{{ mostrar_campo(form.numero) }}</div>
+                <div class="col-md-6">{{ mostrar_campo(form.fecha) }}</div>
+                <div class="col-md-12">{{ mostrar_campo(form.cliente, "form-select") }}</div>
+                <div class="col-md-6">{{ mostrar_campo(form.total) }}</div>
+                <div class="col-md-6">{{ mostrar_campo(form.estado, "form-select") }}</div>
+            </div>
+            <div class="d-flex gap-2">
+                {{ form.submit(class="btn btn-primary") }}
+                <a class="btn btn-outline-secondary" href="{{ url_for('facturacion') }}">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

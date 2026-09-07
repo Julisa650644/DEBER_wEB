@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block title %}Productos | La Casa del Clavo{% endblock %}
+
+{% block header %}Módulo de productos{% endblock %}
+
+{% block content %}
+
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+    <div>
+        <h2 class="h3 mb-1">Productos</h2>
+        <p class="text-secondary mb-0">Inventario almacenado de forma permanente en SQLite.</p>
+    </div>
+    <a class="btn btn-primary" href="{{ url_for('nuevo_producto') }}"><i class="bi bi-plus-circle me-1"></i> Nuevo producto</a>
+</div>
+
+<div class="table-responsive mb-4">
+    <table class="table table-striped table-hover align-middle">
+        <caption>Inventario de productos</caption>
+        <thead class="table-dark"><tr>
+            <th scope="col">ID</th><th scope="col">Código</th><th scope="col">Nombre</th>
+            <th scope="col">Categoría</th><th scope="col">Precio</th><th scope="col">Stock</th>
+            <th scope="col">Descripción</th>
+        </tr></thead>
+        <tbody>
+        {% for producto in productos %}
+            <tr><td>{{ producto.id }}</td><td>{{ producto.codigo }}</td><td>{{ producto.nombre }}</td>
+                <td>{{ producto.categoria }}</td><td>${{ "%.2f"|format(producto.precio) }}</td>
+                <td>{{ producto.stock }}</td><td>{{ producto.descripcion }}</td></tr>
+        {% else %}
+            <tr><td colspan="7" class="text-center">No existen productos registrados.</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="row g-4">
+
+    <!-- Bucle Jinja2 -->
+    {% for producto in productos %}
+
+    <div class="col-md-6 col-xl-4">
+        <article class="card h-100 border-0 shadow-sm product-card">
+
+            <div class="card-body">
+
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <span class="badge text-bg-dark">
+                        {{ producto.codigo }}
+                    </span>
+
+                    <!-- Condicional Jinja2 -->
+                    {% if producto.stock > 0 %}
+                        <span class="badge bg-success">
+                            Disponible
+                        </span>
+                    {% else %}
+                        <span class="badge bg-danger">
+                            Agotado
+                        </span>
+                    {% endif %}
+                </div>
+
+                <!-- Filtro upper -->
+                <h3 class="h5">
+                    {{ producto.nombre|upper }}
+                </h3>
+
+                <p class="text-secondary">
+                    {{ producto.descripcion }}
+                </p>
+
+                <p class="mb-2">
+                    <strong>Categoría:</strong>
+                    {{ producto.categoria }}
+                </p>
+
+                <p class="mb-2">
+                    <strong>Precio:</strong>
+                    ${{ "%.2f"|format(producto.precio) }}
+                </p>
+
+                <p class="mb-0">
+                    <strong>Stock:</strong>
+                    {{ producto.stock }} unidades
+                </p>
+
+            </div>
+
+            <div class="card-footer bg-transparent border-0 pt-0 pb-4 px-4">
+
+                {% if producto.stock > 0 %}
+                    <button class="btn btn-primary w-100"
+                            onclick="mostrarMensaje(this.dataset.nombre)" data-nombre="{{ producto.nombre }}">
+                        Consultar producto
+                    </button>
+                {% else %}
+                    <button class="btn btn-secondary w-100" disabled>
+                        Sin existencias
+                    </button>
+                {% endif %}
+
+            </div>
+
+        </article>
+    </div>
+
+    {% else %}
+
+    <div class="col-12">
+        <div class="alert alert-warning">
+            No existen productos registrados.
+        </div>
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}
