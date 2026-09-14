@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio | La Casa del Clavo{% endblock %}
+
+{% block header %}Inicio del sistema{% endblock %}
+
+{% block content %}
+
+<section class="hero-section rounded-4 p-4 p-md-5 mb-5 shadow-sm">
+    <div class="row align-items-center g-4">
+        <div class="col-lg-8">
+            <!-- Variable simple enviada desde Flask -->
+            <p class="text-uppercase fw-semibold text-warning mb-2">
+                {{ nombre_negocio|upper }}
+            </p>
+
+            <h2 class="display-6 fw-bold">
+                Sistema de gestión de la ferretería
+            </h2>
+
+            <p class="lead mb-3">
+                {{ mensaje }}
+            </p>
+
+            <p class="mb-0">
+                Desde esta aplicación se pueden consultar productos,
+                clientes, proveedores y facturación utilizando Flask y Jinja2.
+            </p>
+        </div>
+
+        <div class="col-lg-4 text-center">
+            <i class="bi bi-tools hero-icon"></i>
+        </div>
+    </div>
+</section>
+
+<section class="mb-5">
+    <div class="row g-4">
+
+        <div class="col-sm-6 col-xl-3">
+            <div class="card dashboard-card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-box-seam fs-1 text-primary"></i>
+                    <h3 class="h5 mt-3">Productos</h3>
+                    <p class="display-6 fw-bold">{{ total_productos }}</p>
+                    <a href="{{ url_for('productos') }}" class="btn btn-outline-primary">
+                        Ver productos
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-xl-3">
+            <div class="card dashboard-card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-people fs-1 text-success"></i>
+                    <h3 class="h5 mt-3">Clientes</h3>
+                    <p class="display-6 fw-bold">{{ total_clientes }}</p>
+                    <a href="{{ url_for('clientes') }}" class="btn btn-outline-success">
+                        Ver clientes
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-xl-3">
+            <div class="card dashboard-card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-truck fs-1 text-warning"></i>
+                    <h3 class="h5 mt-3">Proveedores</h3>
+                    <p class="display-6 fw-bold">{{ total_proveedores }}</p>
+                    <a href="{{ url_for('proveedores') }}" class="btn btn-outline-warning">
+                        Ver proveedores
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-xl-3">
+            <div class="card dashboard-card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-receipt fs-1 text-danger"></i>
+                    <h3 class="h5 mt-3">Facturas</h3>
+                    <p class="display-6 fw-bold">{{ total_facturas }}</p>
+                    <a href="{{ url_for('facturacion') }}" class="btn btn-outline-danger">
+                        Ver facturación
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="card border-0 shadow-sm">
+    <div class="card-body p-4">
+
+        <h2 class="h4 mb-4">
+            <i class="bi bi-shop me-2"></i>Información del negocio
+        </h2>
+
+        <!-- Datos tomados de un diccionario -->
+        <div class="row g-3">
+
+            <div class="col-md-6">
+                <strong>Nombre:</strong>
+                {{ info.nombre }}
+            </div>
+
+            <div class="col-md-6">
+                <strong>Ubicación:</strong>
+                {{ info.ciudad }}, {{ info.provincia }}
+            </div>
+
+            <div class="col-md-6">
+                <strong>Teléfono:</strong>
+                {{ info.telefono }}
+            </div>
+
+            <div class="col-md-6">
+                <strong>Correo:</strong>
+                {{ info.correo|lower }}
+            </div>
+
+            <div class="col-12">
+                <strong>Horario:</strong>
+                {{ info.horario }}
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
